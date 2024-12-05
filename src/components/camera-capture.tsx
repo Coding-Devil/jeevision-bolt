@@ -83,19 +83,17 @@ export function CameraCapture() {
 
   return (
     <div 
-      className="relative h-[calc(100vh-4rem)]"
+      className="relative h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-900"
       onClick={handleDoubleTap}
     >
-      <div className="relative h-full rounded-lg overflow-hidden bg-gray-900">
+      <div className="relative aspect-video">
         <Webcam
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           audio={false}
           videoConstraints={{
-            facingMode: facingMode,
-            height: window.innerHeight - 64,
-            width: window.innerWidth
+            facingMode: facingMode
           }}
         />
         <Button
