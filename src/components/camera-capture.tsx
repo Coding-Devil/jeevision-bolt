@@ -82,15 +82,17 @@ export function CameraCapture() {
   }, [autoCapture, isProcessing, capture]);
 
   return (
-    <div 
-      className="relative h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-900"
-      onClick={handleDoubleTap}
-    >
-      <div className="relative aspect-video">
+    <div className="relative h-[calc(100vh-4rem)]">
+      <div 
+        className="absolute inset-0 z-10"
+        onClick={handleDoubleTap}
+      />
+      
+      <div className="absolute top-0 left-0 right-0 h-[50vh]">
         <Webcam
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
           audio={false}
           videoConstraints={{
             facingMode: facingMode
@@ -101,7 +103,7 @@ export function CameraCapture() {
             e.stopPropagation();
             handleSwitchCamera();
           }}
-          className="absolute top-4 right-4 p-2 rounded-full bg-gray-800/50 hover:bg-gray-800"
+          className="absolute top-4 right-4 p-2 rounded-full bg-gray-800/50 hover:bg-gray-800 z-20"
           variant="outline"
           size="default"
         >
@@ -110,7 +112,7 @@ export function CameraCapture() {
       </div>
       
       {isProcessing && (
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-30">
           <div className="text-white">Processing...</div>
         </div>
       )}
