@@ -10,6 +10,7 @@ export async function processImage(imageData: string) {
     }
 
     const response = await fetch(
+      // https://api-inference.huggingface.co/models/nlpconnect/vit-gpt2-image-captioning
       "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-large",
       {
         headers: {
